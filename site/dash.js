@@ -67,7 +67,7 @@ const st = document.createElement('style'); st.textContent = css; document.head.
 window.__AJP='M3459 3163 c-6 -16 -59 -172 -119 -348 -59 -176 -113 -332 -119 -348 -9 -24 24 -122 306 -895 362 -995 351 -959 333 -1002 -18 -44 -106 -77 -212 -80 -5 0 -8 -9 -8 -20 0 -20 5 -20 588 -18 514 3 587 5 587 18 0 10 -16 18 -50 23 -248 43 -252 47 -421 483 -63 164 -214 553 -334 864 -120 311 -286 740 -369 954 -83 214 -151 391 -151 393 0 15 -23 -3 -31 -24z M622 3158 c-42 -42 -3 -55 173 -60 161 -5 192 -13 222 -57 17 -24 18 -83 21 -867 l2 -841 -30 -38 -30 -38 31 -35 32 -36 -6 -375 c-5 -401 -10 -446 -57 -514 -39 -57 -84 -81 -161 -85 -79 -5 -97 11 -63 53 11 13 32 39 47 58 31 39 43 88 33 142 -33 173 -397 208 -483 46 -80 -153 35 -340 232 -377 46 -8 45 -15 -16 -80 l-52 -54 278 0 c260 0 277 1 270 18 -20 46 -55 145 -53 147 2 2 37 19 78 40 203 101 339 250 378 416 32 133 35 237 33 1271 -3 1081 0 1182 28 1198 10 5 80 12 157 15 76 3 149 8 162 11 30 6 28 32 -4 44 -40 15 -1207 13 -1222 -2z M2425 2424 c-416 -52 -566 -396 -335 -771 l48 -77 -118 -58 c-366 -178 -508 -493 -360 -795 155 -314 676 -390 1060 -154 l48 30 23 -25 c128 -137 406 -168 574 -64 84 52 137 150 82 150 -17 0 -28 -10 -40 -35 -58 -121 -182 -71 -312 127 l-66 100 40 61 c76 117 120 229 195 489 21 72 61 106 135 115 53 6 82 26 64 44 -6 6 -101 8 -244 7 -226 -3 -234 -4 -234 -23 0 -17 9 -21 68 -27 118 -11 138 -39 117 -166 -16 -99 -51 -205 -104 -317 -72 -149 -50 -160 -221 107 -82 128 -191 297 -242 376 -51 79 -93 147 -93 152 0 4 44 32 98 60 138 75 226 135 262 180 132 166 82 361 -116 455 -90 43 -241 70 -329 59z m130 -88 c112 -86 136 -316 49 -476 -31 -57 -122 -150 -132 -134 -197 289 -251 464 -178 574 51 77 183 95 261 36z m-102 -1248 c152 -234 277 -431 277 -436 0 -30 -159 -82 -250 -82 -396 1 -657 470 -455 815 28 49 135 150 145 138 3 -4 131 -200 283 -435z';
 const hdr = document.querySelector('header.top .wrap');
 hdr.innerHTML = `
-  <div class="hdrbar"><img id="hdrLogo" src="aj-logo.png" alt="J&A" style="height:22px;width:auto;display:block;margin-right:auto;cursor:pointer"><button class="hdr-ic" id="hdrSearch" aria-label="Search"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></button><span id="verTag" style="display:none">v224</span><button class="hdr-ic" id="hdrF1" aria-label="Formula 1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14.5h1.5l2-2H10l2.2-2 1.8 2H19a3 3 0 0 1 3 3"/><path d="M8.5 16.5h6"/><circle cx="6" cy="16.5" r="2"/><circle cx="17" cy="16.5" r="2"/></svg></button><button class="hdr-ic" id="hdrNotes" aria-label="Notes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3h11l3 3v15H5z"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg></button><button class="hdr-ic" id="hdrCal" aria-label="Calendar"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2.5" x2="8" y2="6.5"/><line x1="16" y1="2.5" x2="16" y2="6.5"/></svg></button><button class="hdr-ic" id="hdrWallet" aria-label="Wallet" onclick="openCards()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><line x1="2.5" y1="10" x2="21.5" y2="10"/></svg></button><button class="hdr-ic" id="hdrMusic" aria-label="Music" onclick="location.href='villa.html'"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 18V5l11-2v13"/><circle cx="6.2" cy="18" r="2.8"/><circle cx="17.2" cy="16" r="2.8"/></svg></button></div>
+  <div class="hdrbar"><img id="hdrLogo" src="aj-logo.png" alt="J&A" style="height:22px;width:auto;display:block;margin-right:auto;cursor:pointer"><button class="hdr-ic" id="hdrSearch" aria-label="Search"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></button><span id="verTag" style="display:none">v225</span><button class="hdr-ic" id="hdrF1" aria-label="Formula 1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14.5h1.5l2-2H10l2.2-2 1.8 2H19a3 3 0 0 1 3 3"/><path d="M8.5 16.5h6"/><circle cx="6" cy="16.5" r="2"/><circle cx="17" cy="16.5" r="2"/></svg></button><button class="hdr-ic" id="hdrNotes" aria-label="Notes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3h11l3 3v15H5z"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg></button><button class="hdr-ic" id="hdrCal" aria-label="Calendar"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2.5" x2="8" y2="6.5"/><line x1="16" y1="2.5" x2="16" y2="6.5"/></svg></button><button class="hdr-ic" id="hdrWallet" aria-label="Wallet" onclick="openCards()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><line x1="2.5" y1="10" x2="21.5" y2="10"/></svg></button><button class="hdr-ic" id="hdrMusic" aria-label="Music" onclick="location.href='villa.html'"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 18V5l11-2v13"/><circle cx="6.2" cy="18" r="2.8"/><circle cx="17.2" cy="16" r="2.8"/></svg></button></div>
   <div class="brandc">
     <div class="bn" id="brandName" style="display:none">A + J</div>
     <div class="bs" style="display:none"><span class="dot" id="syncDot" style="display:inline-block;margin-right:5px"></span><span id="brandSub">Trips &amp; Info</span></div>
@@ -5585,31 +5585,37 @@ function ajTcCompose(b){
   }catch(e){ return null; }
 }
 window.viewNote=function(id){
-  var out=_vn?_vn.apply(this,arguments):undefined;
+  /* v225 ROOT-CAUSE FIX (tripcard-fix-v225): v224's deferred THIRD srcdoc write re-navigated
+     #noteFrame after the sheet was already interactive; Chrome kept painting the new document
+     (tabs visible) but input routing stayed on the dead prior srcdoc frame — every click inside
+     the Trip Card was inert (injected tabs, native tabs, even Leaflet zoom). Fix: never rewrite
+     srcdoc at all. Pre-compose stored body + INJ (+ __ajBoot via __ajInjectBoot) and swap it in
+     as n.body only for the duration of the base viewNote call, so the fresh iframe gets exactly
+     ONE srcdoc navigation with everything already inside (patchFrame then no-ops on the
+     __ajBooted marker). The stored note HTML is never modified. */
   try{
-    if(!on()) return out;
-    var n=((typeof D!=='undefined'&&D&&D.notes)||[]).find(function(x){ return x.id===id; });
-    if(!n||!n.trip_id) return out;
-    var b=String(n.body||'');
-    if(!/<\s*(!doctype|html|script|iframe|div|style|table|svg)\b/i.test(b)) return out;
-    var f=document.getElementById('noteFrame'); if(!f) return out;
-    curTrip=n.trip_id; curFrame=f;
-    var composed=ajTcCompose(b);
-    if(composed===null) return out;   /* injection not provably sound -> original body stays untouched */
-    /* v224 ROOT-CAUSE FIX (tripcard-fix-v224): three same-tick srcdoc writes on #noteFrame
-       (base viewNote body, __ajBoot patchFrame, this layer) made Chrome commit an earlier
-       navigation snapshot — the final composed attribute never rendered (blank Trip Card).
-       Re-issue ONCE, deferred past the boot patcher's last 120ms pass, and pre-mark
-       __ajDone so patchFrame never rewrites srcdoc after us. */
-    setTimeout(function(){
-      try{
-        var fr=document.getElementById('noteFrame'); if(!fr) return;
-        fr.__ajDone=1;
-        fr.srcdoc=composed;   /* view-time only — the stored note HTML is never modified */
-      }catch(e2){}
-    },180);
+    if(on()){
+      var n=((typeof D!=='undefined'&&D&&D.notes)||[]).find(function(x){ return x.id===id; });
+      if(n&&n.trip_id){
+        var b=String(n.body||'');
+        if(/<\s*(!doctype|html|script|iframe|div|style|table|svg)\b/i.test(b)){
+          var composed=ajTcCompose(b);
+          if(composed!==null){
+            var full=composed;
+            try{ if(typeof window.__ajInjectBoot==='function'){ var fb=window.__ajInjectBoot(composed); if(typeof fb==='string'&&fb.indexOf('id="ajTcJs"')>=0) full=fb; } }catch(eB){}
+            curTrip=n.trip_id;
+            var out2, orig=n.body;
+            n.body=full;
+            try{ out2=_vn?_vn.apply(this,arguments):undefined; }
+            finally{ n.body=orig; }
+            try{ var f=document.getElementById('noteFrame'); if(f){ curFrame=f; f.__ajDone=1; } }catch(eF){}
+            return out2;
+          }
+        }
+      }
+    }
   }catch(e){}
-  return out;
+  return _vn?_vn.apply(this,arguments):undefined;
 };
 
 /* ---------- openTrip wrapper: the story page IS the Trip Card ---------- */
