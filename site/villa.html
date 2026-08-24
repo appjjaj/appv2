@@ -1,0 +1,191 @@
+<!doctype html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name=theme-color content=#0b0b0d><meta name=apple-mobile-web-app-capable content=yes>
+<title>Villa &middot; Music</title><style>
+:root{--bg:#0b0b0d;--c:#17171a;--c2:#1f1f24;--l:#2a2a30;--t:#f2f2f4;--d:#8b8b95;--g:#4ade80;--b:#60a5fa;--r:#f87171}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--t);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:0 0 calc(env(safe-area-inset-bottom) + 30px)}
+header{position:sticky;top:0;z-index:9;background:rgba(11,11,13,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--l);padding:calc(env(safe-area-inset-top) + 13px) 16px 13px;display:flex;align-items:center;gap:10px}
+.back{color:var(--b);text-decoration:none;font-size:17px}
+.note{font-size:20px}h1{margin:0;font-size:18px;font-weight:650}
+.sub{color:var(--d);font-size:12px;margin-left:auto}
+main{max-width:760px;margin:0 auto;padding:16px}
+button{font:inherit;color:var(--t);background:var(--c2);border:1px solid var(--l);border-radius:10px;padding:10px 13px;cursor:pointer}
+button:active{transform:scale(.97)}
+.p{background:var(--c);border:1px solid var(--l);border-radius:14px;padding:15px 16px;margin-bottom:13px}
+.p h2{margin:0 0 12px;font-size:12px;color:var(--d);text-transform:uppercase;letter-spacing:.8px;font-weight:600}
+.mv{display:flex;align-items:center;gap:11px}
+.mv input[type=number]{width:72px;font:600 17px -apple-system,sans-serif;color:var(--t);background:var(--c2);border:1px solid var(--l);border-radius:10px;padding:9px;text-align:center}
+input[type=range]{flex:1;accent-color:var(--b);height:26px;min-width:60px;touch-action:pan-y}
+.scale{font-size:11.5px;color:var(--d);margin-top:9px}
+.setall{width:100%;margin-top:11px;background:#1e2f47;border-color:#2c4a6e;font-weight:600}
+select{width:100%;font:inherit;color:var(--t);background:var(--c2);border:1px solid var(--l);border-radius:10px;padding:11px;margin-bottom:10px}
+.go{display:flex;gap:8px}.go button{flex:1}
+.ev{background:#3a2a12;border-color:#6b4a1e}
+.bar{display:flex;gap:8px;margin-bottom:14px}
+.bar button{flex:1}
+.stop{background:#3b1d1d;border-color:#6b2b2b;color:#fca5a5;font-weight:600}
+.room{background:var(--c);border:1px solid var(--l);border-radius:14px;padding:14px 16px;margin-bottom:11px}
+.room.pl{border-color:#2f5d43;background:linear-gradient(180deg,#17211b,#17171a)}
+.rt{display:flex;align-items:center;gap:11px}.rn{font-weight:620;font-size:16px}
+.st{font-size:11px;color:var(--d);text-transform:uppercase;letter-spacing:.7px;margin-left:auto}.st.p{color:var(--g)}
+.np{display:flex;gap:11px;align-items:center;margin-top:11px}
+.np img{width:52px;height:52px;border-radius:7px;object-fit:cover;background:#000;flex:none}
+.tt{font-size:14px;font-weight:560;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.aa{font-size:12.5px;color:var(--d);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ct{display:flex;align-items:center;gap:9px;margin-top:12px}.ct button{padding:9px 12px;min-width:46px}
+.v{font-size:13px;color:var(--t);width:28px;text-align:right;font-variant-numeric:tabular-nums}
+.msg{padding:11px 13px;border-radius:10px;margin-bottom:12px;font-size:13.5px;display:none}
+.msg.err{background:#3b1d1d;border:1px solid #6b2b2b;color:#fca5a5}
+.msg.ok{background:#16301f;border:1px solid #2f5d43;color:#a7f3c9}
+.em{color:var(--d);text-align:center;padding:40px 16px}
+.em code{background:#000;padding:3px 7px;border-radius:5px;font-size:12px;word-break:break-all}
+</style></head><body>
+<header><a class=back href="/">&larr;</a><span class=note>&#127925;</span><h1>Music</h1><span class=sub id=stamp></span></header>
+<main>
+<div class=msg id=msg></div>
+
+<div class=p><h2>Volume &mdash; all rooms</h2>
+  <div class=mv>
+    <input type=number id=mvNum min=0 max=100 value=8>
+    <input type=range id=mvRange min=0 max=40 value=8>
+  </div>
+  <div class=scale id=mvState>Scale is 0&ndash;100. This house normally sits 2&ndash;17, so 8 is quiet background. Let go of the slider and it applies to every room. Slider stops at 40; type higher and you&rsquo;ll be asked to confirm.</div>
+</div>
+
+<div class=p><h2>Play something</h2>
+  <select id=pick></select>
+  <div class=go>
+    <select id=where style=margin:0></select>
+    <button id=playOne>Play here</button>
+  </div>
+  <button class=ev id=playAll style="width:100%;margin-top:9px">Play in every room &mdash; at the volume above</button>
+</div>
+
+<div class=bar><button class=stop id=stopAll>STOP everything</button><button id=refresh>Refresh</button></div>
+<div id=rooms><div class=em>Loading&hellip;</div></div>
+</main>
+<script>
+const API="/villa-api";
+let G=[],busy=0;
+const $=i=>document.getElementById(i);
+const esc=s=>(s==null?"":String(s)).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function say(t,ok){const m=$("msg");m.textContent=t;m.className="msg "+(ok?"ok":"err");m.style.display="block";
+  clearTimeout(say.t);say.t=setTimeout(()=>m.style.display="none",ok?4000:9000);}
+
+async function api(action,extra){
+  const body=Object.assign({action},extra||{});
+  let r=await fetch(API,{method:"POST",credentials:"include",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+  let j=await r.json().catch(()=>({error:"HTTP "+r.status}));
+  if(r.status===401){notPaired();throw new Error("This device is not paired yet");}
+  // server refuses anything above the loud gate unless we confirm
+  if(j.error&&/^LOUD:/.test(j.error)){
+    const lvl=j.error.split(":")[1];
+    if(!confirm("Volume "+lvl+" is LOUD for this house (normal is 2-17).\n\nAre you sure?"))throw new Error("Cancelled");
+    body.loud=true;
+    r=await fetch(API,{method:"POST",credentials:"include",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+    j=await r.json().catch(()=>({error:"HTTP "+r.status}));
+  }
+  if(!r.ok||j.error)throw new Error(j.error||("HTTP "+r.status));
+  return j;
+}
+function notPaired(){$("rooms").innerHTML='<div class=em>This device isn&rsquo;t paired with Villa yet.<br><br>Open this once, then come back:<br><br><code>https://app.jjaj.info/villa-api?k=YOUR_KEY</code></div>';}
+
+function masterVol(){return Math.max(0,Math.min(100,Number($("mvNum").value)||0));}
+$("mvNum").addEventListener("input",()=>{const v=masterVol();$("mvRange").value=Math.min(v,40);});
+$("mvRange").addEventListener("input",()=>{$("mvNum").value=$("mvRange").value;});
+async function applyAll(){
+  const v=masterVol();
+  $("mvState").textContent="Setting every room to "+v+"…";
+  try{const r=await api("volumeAll",{volume:v});
+    $("mvState").textContent="All "+r.set+" rooms at "+r.volume+"."+(r.failed?" ("+r.failed+" failed)":"");
+    await load();}
+  catch(x){$("mvState").textContent="Not applied: "+x.message;}
+}
+$("mvRange").addEventListener("change",applyAll); // fires on RELEASE only, never mid-drag
+$("mvNum").addEventListener("change",applyAll);   // typing: applies on Enter / leaving the box
+
+async function load(){
+  try{const d=await api("state");G=d.groups||[];render();
+    $("stamp").textContent=new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});}
+  catch(x){say(x.message);}
+}
+async function lib(){
+  try{const L=await api("library");
+    $("pick").innerHTML='<optgroup label="Favourites">'+(L.favorites||[]).map(x=>'<option value="f:'+esc(x.id)+'">'+esc(x.name)+(x.service?" &middot; "+esc(x.service):"")+'</option>').join("")
+      +'</optgroup><optgroup label="Playlists">'+(L.playlists||[]).map(x=>'<option value="p:'+esc(x.id)+'">'+esc(x.name)+'</option>').join("")+'</optgroup>';}
+  catch(x){}
+}
+function render(){
+  const w=$("rooms");
+  if(!G.length){w.innerHTML='<div class=em>No rooms found.</div>';return;}
+  w.innerHTML=G.map(g=>{
+    const p=g.playbackState==="PLAYBACK_STATE_PLAYING",n=g.nowPlaying;
+    return '<div class="room'+(p?" pl":"")+'"><div class=rt><span class=rn>'+esc(g.name)+'</span>'
+      +'<span class="st'+(p?" p":"")+'">'+esc((g.playbackState||"").replace("PLAYBACK_STATE_","").toLowerCase())+'</span></div>'
+      +(n&&(n.track||n.artist)?'<div class=np>'+(n.imageUrl?'<img src="'+esc(n.imageUrl)+'">':'')
+        +'<div style="min-width:0"><div class=tt>'+esc(n.track||"")+'</div><div class=aa>'+esc([n.artist,n.album].filter(Boolean).join(" &middot; "))+'</div></div></div>':'')
+      +'<div class=ct>'
+      +'<button data-a=previous data-g="'+esc(g.id)+'">&#9198;</button>'
+      +'<button data-a=togglePlayPause data-g="'+esc(g.id)+'">'+(p?"&#9208;":"&#9654;")+'</button>'
+      +'<button data-a=next data-g="'+esc(g.id)+'">&#9197;</button>'
+      +'<input type=range class=rv min=0 max=100 value="'+(g.volume==null?0:g.volume)+'" data-g="'+esc(g.id)+'">'
+      +'<span class=v>'+(g.volume==null?"-":g.volume)+'</span>'
+      +'<button data-a=mute data-m="'+(g.muted?"0":"1")+'" data-g="'+esc(g.id)+'">'+(g.muted?"&#128263;":"&#128266;")+'</button>'
+      +'</div></div>';}).join("");
+  const wh=$("where"),cur=wh.value;
+  wh.innerHTML=G.map(g=>'<option value="'+esc(g.id)+'">'+esc(g.name)+'</option>').join("");
+  if(cur)wh.value=cur;
+}
+$("rooms").addEventListener("input",ev=>{
+  const el=ev.target; if(!el.classList.contains("rv"))return;
+  el.nextElementSibling.textContent=el.value;});
+$("rooms").addEventListener("change",async ev=>{
+  const el=ev.target; if(!el.classList.contains("rv"))return;
+  try{await api("volume",{group:el.dataset.g,volume:Number(el.value)});}catch(x){say(x.message);}
+});
+$("rooms").addEventListener("click",async ev=>{
+  const b=ev.target.closest("button[data-a]"); if(!b||busy)return;
+  busy=1;
+  try{
+    if(b.dataset.a==="mute")await api("mute",{group:b.dataset.g,muted:b.dataset.m==="1"});
+    else await api(b.dataset.a,{group:b.dataset.g});
+    await new Promise(r=>setTimeout(r,700));await load();
+  }catch(x){say(x.message);}finally{busy=0;}
+});
+
+$("stopAll").addEventListener("click",async()=>{
+  try{const r=await api("pauseAll");say("Stopped. "+r.attempted+" rooms told to pause.",true);await load();}
+  catch(x){say(x.message);}
+});
+$("refresh").addEventListener("click",load);
+function sel(){const v=$("pick").value;if(!v)return null;const i=v.indexOf(":");
+  return{kind:v.slice(0,i)==="f"?"playFavorite":"playPlaylist",id:v.slice(i+1)};}
+$("playOne").addEventListener("click",async()=>{
+  const s=sel(),g=$("where").value;if(!s||!g)return;
+  const v=masterVol();
+  try{await api(s.kind,s.kind==="playFavorite"?{favoriteId:s.id,group:g,volume:v}:{playlistId:s.id,group:g,volume:v});
+    await new Promise(r=>setTimeout(r,1400));await load();}catch(x){say(x.message);}
+});
+$("playAll").addEventListener("click",async()=>{
+  const s=sel();if(!s)return;
+  const v=masterVol(),name=$("pick").options[$("pick").selectedIndex].text;
+  if(!confirm("Play “"+name+"” in ALL "+G.length+" rooms at volume "+v+"?\n\nEvery room is set to "+v+" first."))return;
+  try{const r=await api("playMany",{kind:s.kind,id:s.id,volume:v});
+    say("Playing in "+r.started+" of "+r.rooms+" rooms at volume "+r.volume,!r.failed);
+    await new Promise(z=>setTimeout(z,1600));await load();}catch(x){say(x.message);}
+});
+// Guard: a slider only responds if the touch starts on (or very near) its knob.
+// A stray tap on the track - e.g. thumb brushing the right end while scrolling -
+// is ignored completely, so it can never jump a room to 99.
+document.addEventListener("pointerdown",function(e){
+  const el=e.target;
+  if(!(el&&el.tagName==="INPUT"&&el.type==="range"))return;
+  const rect=el.getBoundingClientRect();
+  const min=+el.min||0,max=+el.max||100;
+  const frac=Math.min(1,Math.max(0,(e.clientX-rect.left)/rect.width));
+  const tapVal=min+frac*(max-min);
+  if(Math.abs(tapVal-(+el.value))>(max-min)*0.12)e.preventDefault();
+},true);
+load();lib();
+</script></body></html>

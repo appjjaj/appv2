@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#e4ebed">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>A+J · Life & Travel</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png" type="image/png">
+<style>
+:root{
+  --paper:#ffffff;--card:#ffffff;--line:#dbe3e6;--line2:#edf2f4;
+  --ink:#1a1a1a;--ink2:#333f47;--muted:#6c7a83;--muted2:#9aa7ae;
+  --teal:#2b4a7a;--teal-d:#1d3357;--gold:#8a6a3b;--gold-l:#a3803f;
+  --ok:#2e7d32;--warn:#b8860b;--bad:#c0392b;--r:14px;
+  --serif:"Times New Roman",Times,Georgia,"Nimbus Roman",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:#d2dbde url(bg.jpg) center top;background-size:100% auto;background-repeat:repeat-y}
+body{font-family:var(--serif);background:#d2dbde;color:var(--ink);min-height:100vh;
+  padding-bottom:calc(80px + env(safe-area-inset-bottom));-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+.hide{display:none!important}
+/* ---- auth ---- */
+#auth{position:fixed;inset:0;z-index:100;background:var(--paper);display:flex;align-items:center;justify-content:center;padding:24px}
+#auth .box{width:100%;max-width:360px;text-align:center}
+#auth .logo{width:170px;height:120px;margin:0 auto 14px;background:#fff}
+#auth .logo img{width:100%;height:100%;object-fit:contain;display:block}
+#auth h1{font-size:26px;margin:0 0 4px;font-weight:700;letter-spacing:.5px}
+#auth p{color:var(--muted);font-size:15px;margin:0 0 24px;font-style:italic}
+#auth input{width:100%;background:#fff;border:1px solid var(--line);border-radius:10px;color:var(--ink);font-family:var(--serif);font-size:17px;padding:13px 14px;margin-top:10px;outline:none}
+#auth input:focus{border-color:var(--teal)}
+#auth .err{color:var(--bad);font-size:14px;margin-top:10px;min-height:18px}
+#auth .switch{margin-top:18px;font-size:14px;color:var(--muted)}
+#auth .switch b{color:var(--teal);cursor:pointer;font-weight:700}
+/* ---- header ---- */
+header.top{position:static;background:transparent;padding:0 0 10px;border-bottom:0}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:56px;height:40px;flex:0 0 auto;background:#fff}
+.logo img{width:100%;height:100%;object-fit:contain;display:block}
+.brand h1{font-size:20px;margin:0;font-weight:700;letter-spacing:.3px}
+.brand p{margin:2px 0 0;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;font-style:italic}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--muted2);display:inline-block}
+.dot.on{background:var(--ok)} .dot.off{background:var(--warn)}
+main{padding-top:16px}
+.view{display:none;animation:fade .22s ease}.view.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.sect{font-size:11px;text-transform:uppercase;letter-spacing:2.6px;color:var(--muted2);margin:24px 2px 10px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.sect .add{color:var(--teal);text-transform:none;letter-spacing:0;font-size:14px;cursor:pointer;font-style:italic}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:12px}
+.hero{position:relative;overflow:hidden;background:#ffffff;border:1px solid var(--line);border-left:3px solid var(--teal)}
+.hero .lbl{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);font-weight:700}
+.hero h2{margin:8px 0 4px;font-size:25px;font-weight:700}.hero .meta{color:var(--ink2);font-size:15px}
+.count{display:flex;gap:12px;margin-top:14px}
+.count .n{background:#f5f5f5;border:1px solid var(--line);border-radius:10px;padding:8px 14px;text-align:center;min-width:58px}
+.count .n b{display:block;font-size:24px;line-height:1;color:var(--ink)}.count .n span{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
+.row{display:flex;align-items:center;gap:12px}
+.pill{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.pill.soon{background:#fbf1dc;color:#8a6a12;border:1px solid #ecdcb0}
+.pill.ok{background:#e7f2e8;color:#2e7d32;border:1px solid #c7e2c9}
+.pill.past{background:#f2f2f2;color:var(--muted);border:1px solid var(--line)}
+.pill.due{background:#fbe6e3;color:#b5352a;border:1px solid #f0c8c2}
+.tile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;transition:.15s}
+.tile:active{transform:scale(.96);border-color:var(--teal)}
+.tile .ic{font-size:23px}.tile .t{font-size:13px;font-weight:700;line-height:1.2}.tile .s{font-size:11px;color:var(--muted2);font-style:italic}
+.list-item{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line2)}
+.list-item:last-child{border-bottom:0}
+.ava{width:40px;height:40px;border-radius:10px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:19px;background:#f7f7f7;border:1px solid var(--line)}
+.li-main{flex:1;min-width:0}.li-main .h{font-weight:700;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.li-main .sub{font-size:13px;color:var(--muted);margin-top:2px}
+.chev{color:var(--muted2);font-size:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:10px;padding:12px 16px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--serif);transition:.15s}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--ink);color:#fff}
+.btn.gold{background:var(--gold);color:#fff}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.block{display:flex;width:100%}.btn.sm{padding:8px 13px;font-size:13.5px;border-radius:9px}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap}
+.fab{position:fixed;right:calc(50% - 320px + 16px);bottom:calc(94px + env(safe-area-inset-bottom));z-index:30;width:56px;height:56px;border-radius:50%;
+  background:var(--ink);color:#fff;font-size:28px;border:none;box-shadow:0 6px 18px rgba(0,0,0,.22);cursor:pointer;display:flex;align-items:center;justify-content:center}
+@media(max-width:672px){.fab{right:20px}}
+nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:8px 0 calc(8px + env(safe-area-inset-bottom))}
+.tabs .inner{max-width:640px;margin:0 auto;display:flex;justify-content:space-around}
+.tab{background:none;border:none;color:var(--muted2);font-family:var(--serif);font-size:11px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 10px;transition:.15s}
+.tab .ic{font-size:21px;line-height:1;filter:grayscale(.3)}.tab.active{color:var(--teal)}
+.tab.active .ic{filter:none}
+.empty{text-align:center;padding:24px 16px;color:var(--muted)}.empty .ic{font-size:38px;opacity:.5}
+.searchbar{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 14px;margin-bottom:6px}
+.searchbar input{flex:1;background:none;border:none;color:var(--ink);font-size:16px;outline:none;font-family:var(--serif)}
+.searchbar .ic{color:var(--muted2)}
+.cal{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 12px 8px;margin-bottom:12px}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.cal-head b{font-size:15px;font-weight:700}
+.cal-nav{background:#fff;border:1px solid var(--line);color:var(--ink);width:28px;height:28px;border-radius:7px;font-size:15px;cursor:pointer}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal-dow{text-align:center;font-size:11px;color:var(--muted2);font-weight:700;padding:2px 0}
+.cal-cell{min-height:46px;border-radius:7px;display:flex;flex-direction:column;align-items:stretch;font-size:12.5px;color:var(--ink);position:relative;cursor:pointer;border:1px solid transparent;padding:2px 1px;overflow:hidden}
+.cal-cell .cd{text-align:center;line-height:1.3}
+.cal-cell.dim{color:var(--muted2)}
+.cal-cell.today{border-color:var(--teal);background:#eef2f8}
+.cl-wrap{display:block;margin-top:1px;min-width:0}
+.cl{display:block;font-size:8px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink2);text-align:left;background:#f3f0ea;border-radius:3px;padding:0 2px;margin-top:1px}
+.cl.trip{color:#fff;background:var(--teal);font-weight:700}
+.cl.more{background:none;color:var(--muted2)}
+.cal-cell.dim .cl{opacity:.55}
+.cal-cell .ev{display:none}
+.scrim{position:fixed;inset:0;background:rgba(40,36,26,.34);z-index:50;display:none;align-items:flex-end;justify-content:center}
+.scrim.show{display:flex}
+.sheet{background:#fff;width:100%;max-width:640px;border-radius:18px 18px 0 0;border:1px solid var(--line);border-bottom:0;max-height:92vh;overflow-y:auto;padding:8px 16px calc(24px + env(safe-area-inset-bottom));box-shadow:0 -8px 30px rgba(0,0,0,.12);animation:up .26s cubic-bezier(.2,.8,.2,1)}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+.grab{width:40px;height:4px;border-radius:2px;background:var(--line);margin:8px auto 12px}
+.sheet h3{margin:2px 0 14px;font-size:20px;font-weight:700}
+label.f{display:block;font-size:12px;color:var(--muted);margin:12px 0 6px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+input,textarea,select{width:100%;background:#fff;border:1px solid var(--line);border-radius:10px;color:var(--ink);font-family:var(--serif);font-size:16px;padding:12px 13px;outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--teal)}
+textarea{resize:vertical;min-height:70px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.subbox{background:#fafafa;border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:10px;position:relative}
+.subbox .rm{position:absolute;right:8px;top:8px;background:none;border:none;color:var(--bad);font-size:18px;cursor:pointer}
+.mini{font-size:13px;color:var(--muted)}
+.divider{height:1px;background:var(--line);margin:16px 0}
+.note-txt{white-space:pre-wrap;font-size:15px;color:var(--ink2);line-height:1.55;overflow-wrap:anywhere;word-break:break-word}
+.note-txt a{color:var(--teal);font-weight:700;word-break:break-all}
+.flight-line{display:flex;align-items:center;gap:8px;font-size:14px;margin-top:8px}
+.flight-line .code{font-weight:700;font-size:16px}.flight-line .arrow{color:var(--gold)}
+.toast{position:fixed;bottom:calc(98px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:var(--ink);border:1px solid var(--ink);color:#fff;padding:11px 18px;border-radius:10px;font-size:14px;z-index:120;opacity:0;transition:.3s;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.toast.show{opacity:1}
+.foot{text-align:center;color:var(--muted2);font-size:12px;padding:22px 0 8px;font-style:italic}
+.copybtn{background:#fff;border:1px solid var(--line);font-variant-numeric:tabular-nums;color:var(--teal);border-radius:8px;font-size:13px;font-weight:700;padding:5px 11px;cursor:pointer;font-family:var(--serif)}
+.spinner{width:34px;height:34px;border:3px solid var(--line);border-top-color:var(--teal);border-radius:50%;animation:spin .8s linear infinite;margin:40px auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* trip hero */
+.trip-hero{border-left:3px solid var(--teal);cursor:pointer}
+.th-title{font-size:24px;font-weight:700;line-height:1.15}
+.th-dates{font-size:14px;color:var(--muted);margin-top:3px;font-style:italic}
+.th-block{border-top:1px solid var(--line2);margin-top:12px;padding-top:4px}
+.th-note{border-top:1px solid var(--line2);margin-top:12px;padding-top:10px;font-size:14px;color:var(--ink2)}
+.it-line{display:flex;align-items:center;gap:10px;padding:7px 0}
+.it-ic{font-size:17px;flex:0 0 auto}
+.it-main{flex:1;min-width:0}
+.it-main b{display:block;font-size:15px}
+.it-main .mini{display:block;margin-top:1px}
+.flight-line{flex-wrap:wrap}
+.flight-line .copybtn{margin-left:auto}
+.chips{display:flex;gap:8px;margin:14px 0 2px}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 16px;font-family:var(--serif);font-size:13.5px;font-weight:700;color:var(--muted);cursor:pointer}
+.chip.on{border-color:var(--teal);color:var(--teal)}
+.kv-line{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--line2)}
+.kv-line:last-of-type{border-bottom:0}
+.kv-text{flex:1;font-size:15px;color:var(--ink2);line-height:1.5;overflow-wrap:anywhere}
+.kv-text a{color:var(--teal);font-weight:700;word-break:break-all}
+/* ---- desktop ---- */
+@keyframes pop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+@media(min-width:900px){
+  /* v169: was html,body{background:#cfd9dd} - an opaque body background paints
+     ABOVE the z-index:-1 body::before wallpaper, so the toile vanished on any
+     window wider than 900px. html keeps the colour; body must stay transparent. */
+  html{background:#cfd9dd}
+  body{background:transparent}
+  body{overflow-x:clip}
+  .wrap{max-width:1100px;padding:0 32px}
+  header.top{padding-top:18px}
+  .tabs .inner{max-width:1100px;justify-content:center;gap:56px}
+  .fab{right:max(28px,calc(50% - 550px + 28px))}
+  .searchbar{max-width:640px;margin-left:auto;margin-right:auto}
+  .cal-cell{min-height:82px;font-size:14px}
+  .cl{font-size:10.5px;padding:1px 4px}
+  .clocks{gap:38px;padding:12px 0 4px}
+  .clk svg{width:104px;height:104px}
+  .clk .lbl{font-size:11.5px}.clk .dig{font-size:13.5px}.clk .who{font-size:10px}.clk .cwx{font-size:12.5px}
+  .scrim{align-items:center;justify-content:center;padding:28px}
+  .sheet{max-width:820px;width:100%;margin:0 auto;border-radius:18px;border-bottom:1px solid var(--line);max-height:86vh;animation:pop .22s ease;padding-bottom:24px}
+  .grab{display:none}
+  .toast{bottom:auto;top:26px}
+}
+
+/* ================= v174 · CAR + SHORT-LANDSCAPE LAYOUT =================
+   AJ, 6 Aug: "the screen turns into a letterbox with this app on the car".
+   Cause: the desktop rule caps .wrap at 1100px and centres it, and the fixed
+   bottom nav reserves ~80px. On a car head unit (wide, roughly 400-720px tall)
+   that leaves a narrow centred strip with dead bands either side, and the nav
+   eats a quarter of the height. This block reclaims the full width and slims
+   the furniture whenever the viewport is landscape and short. It never fires
+   on a phone held upright or on a normal desktop window. */
+@media (orientation:landscape) and (max-height:620px){
+  html{background:#cfd9dd}
+  body{background:transparent;padding-bottom:calc(56px + env(safe-area-inset-bottom))}
+  /* toile was sized to the width, so on a wide-short screen it ballooned */
+  body::before{background-size:cover;background-repeat:no-repeat;background-position:center}
+  .wrap{max-width:none;padding:0 22px}
+  main{padding-top:8px}
+  header.top{padding:6px 0 4px}
+  .brand h1{font-size:17px}
+  .brand p{font-size:11.5px}
+  .logo{width:44px;height:32px}
+  .sect{margin:14px 2px 7px}
+  .card,.cal{margin-bottom:9px;padding:12px}
+  /* slim the nav: icon and label on one line, less vertical padding */
+  nav.tabs{padding:3px 0 calc(3px + env(safe-area-inset-bottom))}
+  .tabs .inner{max-width:none;justify-content:center;gap:34px}
+  .tab{flex-direction:row;gap:7px;font-size:12.5px;padding:5px 12px}
+  .tab .ic{font-size:17px}
+  .fab{width:46px;height:46px;font-size:23px;bottom:calc(62px + env(safe-area-inset-bottom));right:20px}
+  .toast{bottom:auto;top:12px}
+  .scrim{align-items:center;padding:14px}
+  .sheet{max-width:900px;border-radius:16px;border-bottom:1px solid var(--line);max-height:94vh}
+  .grab{display:none}
+  .cal-cell{min-height:38px}
+}
+/* wide car screens: use the width instead of one tall centred column */
+@media (orientation:landscape) and (max-height:620px) and (min-width:1000px){
+  .view.active{column-count:2;column-gap:22px}
+  .card,.cal,.hero,.trip-hero,.tile-grid{break-inside:avoid;-webkit-column-break-inside:avoid}
+  .sect{break-after:avoid}
+  .searchbar{max-width:none}
+}
+@media (orientation:landscape) and (max-height:620px) and (min-width:1500px){
+  .view.active{column-count:3}
+}
+</style>
+</head>
+<body>
+
+<div id="auth">
+  <div class="box">
+    <div class="logo"><img src="logo.jpg" alt="J&A"></div>
+    <input id="au_email" type="email" value="aj@jjaj.info" placeholder="Email" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false">
+    <input id="au_pass" type="password" placeholder="Password" autocomplete="current-password">
+    <div class="err" id="au_err"></div>
+    <button class="btn primary block" style="margin-top:14px" id="au_btn">Sign in</button>
+  </div>
+</div>
+
+<div id="shell" class="hide">
+  <header class="top"><div class="wrap brand">
+    <div class="logo"><img src="logo.jpg" alt="J&A"></div>
+    <div><h1 id="brandName">A + J</h1><p><span class="dot" id="syncDot"></span><span id="brandSub">Life &amp; Travel</span></p></div>
+    <a href="villa.html" id="musicBtn" title="Music" aria-label="Music" style="margin-left:auto;font-size:25px;line-height:1;text-decoration:none;padding:8px 2px;align-self:center">&#127925;</a>
+  </div></header>
+  <main class="wrap">
+    <section class="view active" id="v-home"></section>
+    <section class="view" id="v-info"></section>
+    <section class="view" id="v-more"></section>
+    <section class="view" id="v-flights"></section>
+    <div class="foot">A+J · synced &amp; offline-ready</div>
+  </main>
+  <button class="fab hide" id="fab">+</button>
+  <nav class="tabs"><div class="inner">
+    <button class="tab active" data-v="home"><span class="ic">🏠</span>Home</button>
+    <button class="tab" data-v="flights"><span class="ic">🛫</span>Flights</button>
+    <button class="tab" data-v="info"><span class="ic">🔐</span>Info</button>
+    <button class="tab" data-v="more"><span class="ic">⚙️</span>More</button>
+  </div></nav>
+</div>
+
+<div class="scrim" id="scrim"><div class="sheet" id="sheet"></div></div>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script src="dash.js"></script>
+<script src="spine.js"></script>
+</body>
+</html>

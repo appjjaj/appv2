@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/><title>A+J · Life &amp; Travel</title></head>
+<body style="background:#f5f3ee;margin:0">
+<div id="boot" style="font-family:Times,serif;padding:40px;text-align:center;color:#726e64">Loading A+J…</div>
+<script>
+//<![CDATA[
+fetch('index.html').then(function(r){return r.text();}).then(function(t){
+  var doc = new DOMParser().parseFromString(t, 'text/html');
+  var incoming = document.importNode(doc.documentElement, true);
+  document.replaceChild(incoming, document.documentElement);
+  var scripts = Array.prototype.slice.call(document.querySelectorAll('script'));
+  scripts.forEach(function(old){
+    var s = document.createElement('script');
+    if (old.src) { s.src = old.src; s.async = false; }
+    else { s.textContent = old.textContent; }
+    old.parentNode.replaceChild(s, old);
+  });
+}).catch(function(e){ document.getElementById('boot').textContent = 'Load failed: ' + e.message; });
+//]]>
+</script>
+</body>
+</html>

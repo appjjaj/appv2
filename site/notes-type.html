@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>A+J · Notes type — pick one</title>
+<style>
+:root{
+  --paper:#fff;--line:#dbe3e6;--line2:#edf2f4;
+  --ink:#1a1a1a;--ink2:#333f47;--muted:#6c7a83;--muted2:#9aa7ae;
+  --teal:#2b4a7a;--gold:#8a6a3b;--gold-l:#a3803f;
+  --serif:"Times New Roman",Times,Georgia,"Nimbus Roman",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:#cfd9dd}
+body{margin:0;font-family:var(--serif);color:var(--ink);background:transparent;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:#d2dbde url(bg.jpg) center top;background-size:100% auto;background-repeat:repeat-y}
+.page{max-width:1400px;margin:0 auto;padding:22px 16px 60px}
+.lede{background:#fff;border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:14px;padding:16px 18px;margin-bottom:22px}
+.lede h1{margin:0 0 6px;font-size:22px;font-weight:700;letter-spacing:.3px}
+.lede p{margin:0;color:var(--ink2);font-size:15px;line-height:1.55}
+.lede em{color:var(--muted);font-style:italic}
+.deck{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:1040px){.deck{grid-template-columns:repeat(3,1fr);align-items:start}}
+.spec{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.spec>header{display:flex;align-items:baseline;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.spec>header .ltr{font-size:30px;line-height:1;color:var(--teal);font-weight:700}
+.spec>header .nm{font-size:15px;font-weight:700;letter-spacing:.4px}
+.spec>header .dsc{font-size:13px;color:var(--muted);font-style:italic;margin-left:auto;text-align:right}
+.body{padding:6px 18px 20px}
+
+/* ============ A · RULE ============ */
+.A{--cat-size:11.5px;--cat-track:2.6px;--top-size:19px;--top-weight:400;--kid-size:15px;--meta:12px}
+.A .cat{font-size:var(--cat-size);text-transform:uppercase;letter-spacing:var(--cat-track);color:var(--muted2);font-weight:700;margin:22px 0 0}
+.A .cat:first-child{margin-top:8px}
+.A .catrule{height:1px;background:var(--ink);opacity:.5;margin:6px 0 2px}
+.A .top{font-size:var(--top-size);font-weight:var(--top-weight);padding:11px 0 9px;border-bottom:1px solid var(--line2);display:flex;gap:9px;align-items:baseline}
+.A .kid{font-size:var(--kid-size);color:var(--ink2);padding:9px 0 9px 22px;border-bottom:1px solid var(--line2);display:flex;gap:8px;align-items:baseline}
+.A .kid:last-child{border-bottom:0}
+.A .solo{font-size:var(--top-size);font-weight:var(--top-weight);padding:11px 0;border-bottom:1px solid var(--line2);display:flex;gap:9px;align-items:baseline}
+.A .ic{font-size:14px;flex:0 0 auto;opacity:.85}
+.A .n{font-size:var(--meta);color:var(--muted2);margin-left:auto;font-style:italic}
+
+/* ============ B · WEIGHT ============ */
+.B{--cat-size:20px;--top-size:17px;--kid-size:14.5px}
+.B .cat{font-size:var(--cat-size);color:var(--gold);font-weight:400;letter-spacing:.3px;margin:24px 0 2px;padding-bottom:5px;border-bottom:1px solid var(--gold-l)}
+.B .cat:first-child{margin-top:10px}
+.B .top{font-size:var(--top-size);font-weight:700;padding:12px 0 4px;display:flex;gap:9px;align-items:baseline}
+.B .kid{font-size:var(--kid-size);color:var(--ink2);padding:6px 0 6px 20px;display:flex;gap:8px;align-items:baseline}
+.B .kid+.top{border-top:1px solid var(--line2);margin-top:6px}
+.B .solo{font-size:var(--top-size);font-weight:700;padding:12px 0;border-bottom:1px solid var(--line2);display:flex;gap:9px;align-items:baseline}
+.B .ic{font-size:14px;flex:0 0 auto;opacity:.85}
+.B .n{font-size:12px;color:var(--muted2);margin-left:auto;font-style:italic}
+
+/* ============ C · COLUMN ============ */
+.C{--cat-size:10.5px;--top-size:16px;--kid-size:14px}
+.C .grp{display:grid;grid-template-columns:74px 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+.C .grp:first-child{border-top:0}
+.C .cat{font-size:var(--cat-size);text-transform:uppercase;letter-spacing:1.8px;color:var(--teal);font-weight:700;padding-top:4px;line-height:1.5}
+.C .top{font-size:var(--top-size);font-weight:400;padding:3px 0;display:flex;gap:8px;align-items:baseline}
+.C .kid{font-size:var(--kid-size);color:var(--muted);padding:2px 0 2px 16px;display:flex;gap:7px;align-items:baseline;border-left:1px solid var(--line2);margin-left:3px}
+.C .ic{font-size:13px;flex:0 0 auto;opacity:.85}
+.C .n{font-size:11.5px;color:var(--muted2);margin-left:auto;font-style:italic}
+
+.tail{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:22px;font-size:15px;color:var(--ink2);line-height:1.6}
+.tail b{font-weight:700}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="lede">
+  <h1>Notes — three ways to show the same list</h1>
+  <p>Same notes, same colours, same typeface. Only the hierarchy changes: how a category reads against a hotel, and a hotel against the notes filed under it. <em>Pick a letter. Whichever you choose becomes the app's permanent set of named styles, so nothing has to be re-decided again.</em></p>
+</div>
+
+<div class="deck">
+
+  <!-- ============================= A ============================= -->
+  <section class="spec A">
+    <header><span class="ltr">A</span><span class="nm">Rule</span><span class="dsc">quiet · ledger</span></header>
+    <div class="body">
+      <div class="cat">Hotels</div><div class="catrule"></div>
+      <div class="top"><span class="ic">🏨</span>Anantara &amp; AVANI Riverside Bangkok</div>
+      <div class="top"><span class="ic">🏨</span>Anantara Siam Bangkok</div>
+      <div class="top"><span class="ic">🏨</span>Sindhorn Kempinski Bangkok</div>
+      <div class="kid"><span class="ic">🗺️</span>Walks — Lumpini Park &amp; Erawan</div>
+      <div class="top"><span class="ic">🏨</span>The Peninsula Bangkok</div>
+      <div class="kid"><span class="ic">🗺️</span>Walks — Bangkok River Walks</div>
+      <div class="top"><span class="ic">🏨</span>The Siam<span class="n">3</span></div>
+      <div class="kid"><span class="ic">🛥️</span>Shuttle Boat</div>
+      <div class="kid"><span class="ic">🗺️</span>Walks — Dusit &amp; Old Town</div>
+      <div class="kid"><span class="ic">🖼️</span>Wall Art — Posters</div>
+      <div class="top"><span class="ic">🏨</span>The Sukhothai Bangkok</div>
+      <div class="kid"><span class="ic">🗺️</span>Walks — Sathorn to Lumpini Park</div>
+      <div class="cat">Places</div><div class="catrule"></div>
+      <div class="top"><span class="ic">📍</span>Bangkok</div>
+      <div class="kid"><span class="ic">🗺️</span>Walks — Sukhothai to Wat &amp; Lumphini Loop</div>
+      <div class="cat">Travel</div><div class="catrule"></div>
+      <div class="top"><span class="ic">🛕</span>Road trips — Samui → Hua Hin, 10–15 Aug</div>
+      <div class="cat">Loose</div><div class="catrule"></div>
+      <div class="solo"><span class="ic">🍽️</span>Bangkok — 50 Best restaurants &amp; bars</div>
+      <div class="solo"><span class="ic">📄</span>Sawanbondin</div>
+      <div class="solo"><span class="ic">🍷</span>Wine</div>
+    </div>
+  </section>
+
+  <!-- ============================= B ============================= -->
+  <section class="spec B">
+    <header><span class="ltr">B</span><span class="nm">Weight</span><span class="dsc">senior headings</span></header>
+    <div class="body">
+      <div class="cat">Hotels</div>
+      <div class="top"><span class="ic">🏨</span>Anantara &amp; AVANI Riverside Bangkok</div>
+      <div class="top"><span class="ic">🏨</span>Anantara Siam Bangkok</div>
+      <div class="top"><span class="ic">🏨</span>Sindhorn Kempinski Bangkok</div>
+      <div class="kid"><span class="ic">🗺️</span>Walks — Lumpini Park &amp; Erawan</div>
+      <div class="top"><span class="ic">🏨</span>The Peninsula Bangkok</div>
+      <div class="kid"><span class="ic">🗺️</span>Walks — Bangkok River Walks</div>
+      <div class="top"><span class="ic">🏨</span>The Siam<span class="n">3</span></div>
+      <div class="kid"><span class="ic">🛥️</span>Shuttle Boat</div>
+      <div class="kid"><span class="ic">🗺️</span>Walks — Dusit &amp; Old Town</div>
+      <div class="kid"><span class="ic">🖼️</span>Wall Art — Posters</div>
+      <div class="top"><span class="ic">🏨</span>The Sukhothai Bangkok</div>
+      <div class="kid"><span class="ic">🗺️</span>Walks — Sathorn to Lumpini Park</div>
+      <div class="cat">Places</div>
+      <div class="top"><span class="ic">📍</span>Bangkok</div>
+      <div class="kid"><span class="ic">🗺️</span>Walks — Sukhothai to Wat &amp; Lumphini Loop</div>
+      <div class="cat">Travel</div>
+      <div class="top"><span class="ic">🛕</span>Road trips — Samui → Hua Hin, 10–15 Aug</div>
+      <div class="cat">Loose</div>
+      <div class="solo"><span class="ic">🍽️</span>Bangkok — 50 Best restaurants &amp; bars</div>
+      <div class="solo"><span class="ic">📄</span>Sawanbondin</div>
+      <div class="solo"><span class="ic">🍷</span>Wine</div>
+    </div>
+  </section>
+
+  <!-- ============================= C ============================= -->
+  <section class="spec C">
+    <header><span class="ltr">C</span><span class="nm">Column</span><span class="dsc">compact · more on screen</span></header>
+    <div class="body">
+      <div class="grp">
+        <div class="cat">Hotels</div>
+        <div>
+          <div class="top"><span class="ic">🏨</span>Anantara &amp; AVANI Riverside Bangkok</div>
+          <div class="top"><span class="ic">🏨</span>Anantara Siam Bangkok</div>
+          <div class="top"><span class="ic">🏨</span>Sindhorn Kempinski Bangkok</div>
+          <div class="kid"><span class="ic">🗺️</span>Walks — Lumpini Park &amp; Erawan</div>
+          <div class="top"><span class="ic">🏨</span>The Peninsula Bangkok</div>
+          <div class="kid"><span class="ic">🗺️</span>Walks — Bangkok River Walks</div>
+          <div class="top"><span class="ic">🏨</span>The Siam<span class="n">3</span></div>
+          <div class="kid"><span class="ic">🛥️</span>Shuttle Boat</div>
+          <div class="kid"><span class="ic">🗺️</span>Walks — Dusit &amp; Old Town</div>
+          <div class="kid"><span class="ic">🖼️</span>Wall Art — Posters</div>
+          <div class="top"><span class="ic">🏨</span>The Sukhothai Bangkok</div>
+          <div class="kid"><span class="ic">🗺️</span>Walks — Sathorn to Lumpini Park</div>
+        </div>
+      </div>
+      <div class="grp">
+        <div class="cat">Places</div>
+        <div>
+          <div class="top"><span class="ic">📍</span>Bangkok</div>
+          <div class="kid"><span class="ic">🗺️</span>Walks — Sukhothai to Wat &amp; Lumphini Loop</div>
+        </div>
+      </div>
+      <div class="grp">
+        <div class="cat">Travel</div>
+        <div><div class="top"><span class="ic">🛕</span>Road trips — Samui → Hua Hin, 10–15 Aug</div></div>
+      </div>
+      <div class="grp">
+        <div class="cat">Loose</div>
+        <div>
+          <div class="top"><span class="ic">🍽️</span>Bangkok — 50 Best restaurants &amp; bars</div>
+          <div class="top"><span class="ic">📄</span>Sawanbondin</div>
+          <div class="top"><span class="ic">🍷</span>Wine</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="tail">
+  <b>How to read them.</b> A leans on rules — the category is a whisper above a hard line, and everything below it sits in a ledger. B leans on the headings themselves — gold category, hotel names carrying real weight, notes underneath stepping back. C gives the category its own column and buys you more list per screen, which is the one that will matter on the car display.<br><br>
+  Say <b>A</b>, <b>B</b> or <b>C</b> — or point at what is wrong with the one you nearly like.
+</div>
+
+</div>
+</body>
+</html>

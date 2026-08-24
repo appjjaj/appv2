@@ -1,0 +1,2 @@
+# REARCH v2 host routing (app2 = v2 shell; app = v1 untouched)
+https://app2.jjaj.info/ /index2.html 200!
