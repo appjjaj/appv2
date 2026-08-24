@@ -67,7 +67,7 @@ const st = document.createElement('style'); st.textContent = css; document.head.
 window.__AJP='M3459 3163 c-6 -16 -59 -172 -119 -348 -59 -176 -113 -332 -119 -348 -9 -24 24 -122 306 -895 362 -995 351 -959 333 -1002 -18 -44 -106 -77 -212 -80 -5 0 -8 -9 -8 -20 0 -20 5 -20 588 -18 514 3 587 5 587 18 0 10 -16 18 -50 23 -248 43 -252 47 -421 483 -63 164 -214 553 -334 864 -120 311 -286 740 -369 954 -83 214 -151 391 -151 393 0 15 -23 -3 -31 -24z M622 3158 c-42 -42 -3 -55 173 -60 161 -5 192 -13 222 -57 17 -24 18 -83 21 -867 l2 -841 -30 -38 -30 -38 31 -35 32 -36 -6 -375 c-5 -401 -10 -446 -57 -514 -39 -57 -84 -81 -161 -85 -79 -5 -97 11 -63 53 11 13 32 39 47 58 31 39 43 88 33 142 -33 173 -397 208 -483 46 -80 -153 35 -340 232 -377 46 -8 45 -15 -16 -80 l-52 -54 278 0 c260 0 277 1 270 18 -20 46 -55 145 -53 147 2 2 37 19 78 40 203 101 339 250 378 416 32 133 35 237 33 1271 -3 1081 0 1182 28 1198 10 5 80 12 157 15 76 3 149 8 162 11 30 6 28 32 -4 44 -40 15 -1207 13 -1222 -2z M2425 2424 c-416 -52 -566 -396 -335 -771 l48 -77 -118 -58 c-366 -178 -508 -493 -360 -795 155 -314 676 -390 1060 -154 l48 30 23 -25 c128 -137 406 -168 574 -64 84 52 137 150 82 150 -17 0 -28 -10 -40 -35 -58 -121 -182 -71 -312 127 l-66 100 40 61 c76 117 120 229 195 489 21 72 61 106 135 115 53 6 82 26 64 44 -6 6 -101 8 -244 7 -226 -3 -234 -4 -234 -23 0 -17 9 -21 68 -27 118 -11 138 -39 117 -166 -16 -99 -51 -205 -104 -317 -72 -149 -50 -160 -221 107 -82 128 -191 297 -242 376 -51 79 -93 147 -93 152 0 4 44 32 98 60 138 75 226 135 262 180 132 166 82 361 -116 455 -90 43 -241 70 -329 59z m130 -88 c112 -86 136 -316 49 -476 -31 -57 -122 -150 -132 -134 -197 289 -251 464 -178 574 51 77 183 95 261 36z m-102 -1248 c152 -234 277 -431 277 -436 0 -30 -159 -82 -250 -82 -396 1 -657 470 -455 815 28 49 135 150 145 138 3 -4 131 -200 283 -435z';
 const hdr = document.querySelector('header.top .wrap');
 hdr.innerHTML = `
-  <div class="hdrbar"><img id="hdrLogo" src="aj-logo.png" alt="J&A" style="height:22px;width:auto;display:block;margin-right:auto;cursor:pointer"><button class="hdr-ic" id="hdrSearch" aria-label="Search"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></button><span id="verTag" style="display:none">v225</span><button class="hdr-ic" id="hdrF1" aria-label="Formula 1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14.5h1.5l2-2H10l2.2-2 1.8 2H19a3 3 0 0 1 3 3"/><path d="M8.5 16.5h6"/><circle cx="6" cy="16.5" r="2"/><circle cx="17" cy="16.5" r="2"/></svg></button><button class="hdr-ic" id="hdrNotes" aria-label="Notes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3h11l3 3v15H5z"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg></button><button class="hdr-ic" id="hdrCal" aria-label="Calendar"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2.5" x2="8" y2="6.5"/><line x1="16" y1="2.5" x2="16" y2="6.5"/></svg></button><button class="hdr-ic" id="hdrWallet" aria-label="Wallet" onclick="openCards()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><line x1="2.5" y1="10" x2="21.5" y2="10"/></svg></button><button class="hdr-ic" id="hdrMusic" aria-label="Music" onclick="location.href='villa.html'"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 18V5l11-2v13"/><circle cx="6.2" cy="18" r="2.8"/><circle cx="17.2" cy="16" r="2.8"/></svg></button></div>
+  <div class="hdrbar"><img id="hdrLogo" src="aj-logo.png" alt="J&A" style="height:22px;width:auto;display:block;margin-right:auto;cursor:pointer"><button class="hdr-ic" id="hdrSearch" aria-label="Search"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></button><span id="verTag" style="display:none">v228</span><button class="hdr-ic" id="hdrF1" aria-label="Formula 1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14.5h1.5l2-2H10l2.2-2 1.8 2H19a3 3 0 0 1 3 3"/><path d="M8.5 16.5h6"/><circle cx="6" cy="16.5" r="2"/><circle cx="17" cy="16.5" r="2"/></svg></button><button class="hdr-ic" id="hdrNotes" aria-label="Notes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3h11l3 3v15H5z"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg></button><button class="hdr-ic" id="hdrCal" aria-label="Calendar"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2.5" x2="8" y2="6.5"/><line x1="16" y1="2.5" x2="16" y2="6.5"/></svg></button><button class="hdr-ic" id="hdrWallet" aria-label="Wallet" onclick="openCards()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><line x1="2.5" y1="10" x2="21.5" y2="10"/></svg></button><button class="hdr-ic" id="hdrMusic" aria-label="Music" onclick="location.href='villa.html'"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 18V5l11-2v13"/><circle cx="6.2" cy="18" r="2.8"/><circle cx="17.2" cy="16" r="2.8"/></svg></button></div>
   <div class="brandc">
     <div class="bn" id="brandName" style="display:none">A + J</div>
     <div class="bs" style="display:none"><span class="dot" id="syncDot" style="display:inline-block;margin-right:5px"></span><span id="brandSub">Trips &amp; Info</span></div>
@@ -4505,7 +4505,7 @@ document.addEventListener('click',function(ev){
  if(ev.target.closest('.tn'))return; /* arrows keep cycling */
  var k=el.getAttribute('data-k')||''; var m=k.match(/^(.*?)(\d+)$/); var name=m?m[1]:k;
  var today=new Date().toISOString().slice(0,10);
- var list=((window.D&&D.trips)||[]).filter(function(t){return String(t.end_date||'')>=today;});
+ var list=((typeof D!=='undefined'&&D&&D.trips)||[]).filter(function(t){return String(t.end_date||t.start_date||'')>=today;}); /* AJ-HOMEORDER-20260824: D is a lexical global, never window.D */
  var t=list.find(function(x){return String(x.dest||'').indexOf(name)===0||String(x.title||'').indexOf(name)===0;})||list.sort(function(a,b){return String(a.start_date).localeCompare(String(b.start_date));})[0];
  if(t&&window.openTrip){ try{ openTrip(t.id); }catch(e){} }
 });
@@ -5630,4 +5630,185 @@ window.openTrip=function(id){
   return _ot?_ot(id):undefined;   /* dormant fallback only; tv/classic otherwise unreachable */
 };
 window.openTrip.__noteFirst=true;  /* stops spine.js hookTripToNote re-wrapping with its classic fallback */
+})();
+
+
+/* ===== AJ-HOMEORDER-20260824 — ONE canonical Home order (ajqa-13 clocks · ajqa-3 next-trip tap · ajqa-1 todos one-tap) =====
+   Canonical top order in #v-home, BOTH paints (legacy chain AND the /render/home
+   fragment, which now emits this same order — RENDER-V5-20260824):
+     1 clock card #dashRow (NEXT TRIP line + open-todos line under the clocks)
+     2 "Next up · tap for the original" strip (.spineNext, compact, max 3)
+     3 chips + This-week pager (#homeMain)
+     4 tickets strip (#tixStrip)
+   ROOT CAUSE of the jumping: spine.js nextUp() and the v179 tixStrip both
+   insert at v-home firstChild, and the v4 server fragment led with tixStrip —
+   three different top orders across one load (Q13: "where have the clocks
+   gone"). This layer enforces the order with a childList observer: nothing is
+   removed, only moved. Also paints the one-tap todos line on the legacy side. */
+(function(){
+'use strict';
+try{
+var st=document.createElement('style');
+st.textContent=
+ '.spineNext .list-item{padding:5px 8px}'
++'.spineNext .li-main .h{font-size:13px}'
++'.spineNext .li-main .sub{font-size:10.5px}'
++'.spineNext>.mini{font-size:10.5px;letter-spacing:.4px}'
++'.spineNext .chev{font-size:14px}'
++'#ajTodos{text-align:center;font-size:12px;color:#8a815f;margin:7px 2px 2px;line-height:1.7}'
++'#ajTodos .tdseg{cursor:pointer;color:#5d6472;font-weight:600;white-space:nowrap}'
++'#ajTodos .tdseg:active{opacity:.6}';
+document.head.appendChild(st);
+
+/* sb and D are top-level lexical bindings — NEVER window.sb / window.D */
+function DD(){ try{ if(typeof D!=='undefined'&&D) return D; }catch(e){} return window.D||{}; }
+function SB(){ try{ if(typeof sb!=='undefined'&&sb) return sb; }catch(e){} return window.sb||null; }
+function EE(x){ try{ if(typeof esc==='function') return esc(x); }catch(e){} return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+function pd(x){ if(!x) return null; var m=String(x).match(/(\d{4})-(\d{2})-(\d{2})/); return m?new Date(+m[1],+m[2]-1,+m[3]):null; }
+
+/* ---- open-todos line: '☑ 14 to do · Sepang 4 · …' — one quiet line under the clocks ---- */
+var tdC=null, tdAt=0, tdBusy=false;
+function tdLoad(cb){
+ var now=Date.now();
+ if(tdC&&now-tdAt<300000){ cb(tdC); return; }
+ if(tdBusy){ if(tdC) cb(tdC); return; }
+ var s=SB(); if(!s){ if(tdC) cb(tdC); return; }
+ tdBusy=true;
+ try{
+  s.from('trip_checklist').select('trip_id,status').then(function(r){
+   tdBusy=false;
+   if(r.error){ if(tdC) cb(tdC); return; }
+   var od={};
+   (r.data||[]).forEach(function(c){ if(c.status!=='done'&&c.status!=='superseded') od[c.trip_id]=(od[c.trip_id]||0)+1; });
+   tdC=od; tdAt=Date.now(); cb(tdC);
+  });
+ }catch(e){ tdBusy=false; if(tdC) cb(tdC); }
+}
+function tripName(t){
+ var n=String(t.dest||t.title||'').split('—')[0].split(',')[0].trim();
+ return n||String(t.title||'').trim();
+}
+function tdPaint(){
+ var row=document.getElementById('dashRow'); if(!row) return;
+ tdLoad(function(od){
+  if(!od) return;
+  var tk=new Date(); tk.setHours(0,0,0,0);
+  var trips=(DD().trips||[]).filter(function(t){
+   var e=pd(t.end_date)||pd(t.start_date);
+   return od[t.id]&&e&&e>=tk;
+  }).sort(function(a,b){ return String(a.start_date||'9999').localeCompare(String(b.start_date||'9999')); });
+  var total=0; trips.forEach(function(t){ total+=od[t.id]; });
+  var el=document.getElementById('ajTodos');
+  if(!total){ if(el) el.remove(); return; }
+  var sig=trips.map(function(t){ return t.id+':'+od[t.id]; }).join('|');
+  if(el&&el.getAttribute('data-sig')===sig) return;
+  var h='☑ '+total+' to do';
+  trips.forEach(function(t){ h+=' · <span class="tdseg" data-tid="'+t.id+'">'+EE(tripName(t))+' '+od[t.id]+'</span>'; });
+  var row2=document.getElementById('dashRow'); if(!row2) return;
+  if(!el||!row2.contains(el)){
+   if(el) el.remove();
+   el=document.createElement('div'); el.id='ajTodos';
+   var cl=row2.querySelector('.clocks');
+   if(cl&&cl.nextSibling) row2.insertBefore(el,cl.nextSibling); else row2.appendChild(el);
+  }
+  el.setAttribute('data-sig',sig); el.innerHTML=h;
+ });
+}
+/* refresh the counts when a to-do is toggled anywhere (sheet writers call rHome/paints) */
+window.__ajTodosDirty=function(){ tdAt=0; tdPaint(); };
+document.addEventListener('click',function(ev){
+ var g=ev.target&&ev.target.closest&&ev.target.closest('#ajTodos .tdseg'); if(!g) return;
+ var tid=g.getAttribute('data-tid');
+ if(tid&&window.openTrip){ try{ openTrip(tid); }catch(e){} }
+});
+
+/* ---- one canonical order, both paints ---- */
+var pend=false;
+function enforce(){
+ var v=document.getElementById('v-home'); if(!v) return;
+ var d=document.getElementById('dashRow');
+ var s=v.querySelector(':scope > .spineNext');
+ var m=document.getElementById('homeMain');
+ var x=document.getElementById('tixStrip');
+ if(!m||m.parentNode!==v) return;
+ try{
+  if(d&&d.parentNode===v&&d.nextElementSibling!==(s||m)) v.insertBefore(d,s||m);
+  if(s&&s.nextElementSibling!==m) v.insertBefore(s,m);
+  if(x&&x.parentNode===v&&x.previousElementSibling!==m) v.insertBefore(x,m.nextSibling);
+ }catch(e){}
+ tdPaint();
+}
+function kick(){ if(pend) return; pend=true; requestAnimationFrame(function(){ pend=false; enforce(); }); }
+function arm(){
+ var v=document.getElementById('v-home');
+ if(!v){ setTimeout(arm,600); return; }
+ try{ new MutationObserver(kick).observe(v,{childList:true}); }catch(e){}
+ kick();
+}
+arm();
+setInterval(function(){ try{ if(typeof cur==='undefined'||cur==='home') kick(); }catch(e){} },5000);
+}catch(e){}
+})();
+
+
+/* ===== v227 — AJ-HTMLVIEW-20260824 · inline viewer for text/html + message/rfc822 (D14) =====
+   HTML docs (hotel confirmations, saved emails) fell through to "No inline preview".
+   Now they render in a sandboxed iframe inside the doc overlay, like story pages.
+   Sandbox: allow-popups only — no scripts, no same-origin. Never blank: any failure
+   falls back to the original message. */
+(function(){
+'use strict';
+try{
+  var _open = window.openDocById;
+  if(typeof _open!=='function') return;
+  function SBX(){ return (typeof sb!=='undefined'&&sb)||window.sb; }
+  function decode(b64){
+    try{
+      var bin=atob(String(b64||'').replace(/\s+/g,''));
+      var by=new Uint8Array(bin.length);
+      for(var i=0;i<bin.length;i++) by[i]=bin.charCodeAt(i);
+      return new TextDecoder('utf-8').decode(by);
+    }catch(e){ return null; }
+  }
+  function emailToHtml(raw){
+    var esc=function(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+    var head=raw.split(/\r?\n\r?\n/)[0]||'';
+    var pick=function(n){ var m=head.match(new RegExp('^'+n+':\\s*(.*)$','im')); return m?m[1].trim():''; };
+    var body=raw.slice(head.length);
+    var isHtml=/content-type:\s*text\/html/i.test(raw);
+    var inner=isHtml ? (body.match(/<html[\s\S]*<\/html>/i)||[body])[0] : '<pre style="white-space:pre-wrap;font:14px/1.55 -apple-system,system-ui,sans-serif">'+esc(body)+'</pre>';
+    return '<div style="font:14px/1.5 -apple-system,system-ui,sans-serif;padding:10px 12px;border-bottom:1px solid #e3e8ea;background:#fafbfc">'
+      + '<div><b>'+esc(pick('Subject'))+'</b></div>'
+      + '<div style="color:#6c7a83;margin-top:3px">'+esc(pick('From'))+(pick('Date')?' · '+esc(pick('Date')):'')+'</div></div>'
+      + inner;
+  }
+  function show(html){
+    var body=document.getElementById('ajDocBody'); if(!body) return false;
+    var f=document.createElement('iframe');
+    f.setAttribute('sandbox','allow-popups');
+    f.style.cssText='width:100%;height:78vh;border:0;background:#fff;border-radius:6px';
+    f.srcdoc=html;
+    body.innerHTML=''; body.appendChild(f);
+    return true;
+  }
+  window.openDocById=async function(id){
+    var r=await _open.apply(this,arguments);
+    try{
+      var body=null, ok=false;
+      for(var t=0;t<12;t++){
+        body=document.getElementById('ajDocBody');
+        if(body && body.innerHTML.indexOf('No inline preview')>=0){ ok=true; break; }
+        await new Promise(function(z){ setTimeout(z,150); });
+      }
+      if(!ok) return r;
+      var q=await SBX().from('documents').select('mime,content').eq('id',id).single();
+      var d=q&&q.data; if(!d) return r;
+      var mime=String(d.mime||'').toLowerCase();
+      if(mime.indexOf('text/html')<0 && mime.indexOf('rfc822')<0) return r;
+      var txt=decode(d.content); if(!txt) return r;
+      show(mime.indexOf('rfc822')>=0 ? emailToHtml(txt) : txt);
+    }catch(e){ /* leave the original fallback message in place */ }
+    return r;
+  };
+}catch(e){}
 })();

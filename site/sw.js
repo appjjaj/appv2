@@ -1,4 +1,4 @@
-const CACHE = 'ajhub-cloud-v225';
+const CACHE = 'ajhub-cloud-v228';
 const ASSETS = ['./','./index.html','./app.js','./dash.js','./spine.js','./bg.jpg','./aj-logo.png','./config.js','https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./apple-touch-icon.png'];
 self.addEventListener('install', e => { self.skipWaiting(); e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS).catch(()=>{}))); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k!==CACHE).map(k => caches.delete(k))))); self.clients.claim(); });
